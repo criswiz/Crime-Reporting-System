@@ -26,7 +26,7 @@ function Login() {
         <h1>
           <FaSignInAlt /> Login
         </h1>
-        <p>Please create an account</p>
+        <p>Please Enter Details to Login</p>
       </section>
 
       <section className="form">
@@ -38,7 +38,7 @@ function Login() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your email"
+              placeholder="Enter your Ghana Card Number"
               onChange={onChange}
             />
           </div>
