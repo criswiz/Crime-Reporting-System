@@ -1,0 +1,36 @@
+{
+  "name": "police-complaint-app",
+  "version": "1.0.0",
+  "description": "Online platform to help citizens to file complaints easily and help the police to track and work on complaints easily",
+  "main": "server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "server": "nodemon backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/criswiz/Crime-Reporting-System.git"
+  },
+  "keywords": [
+    "Police",
+    "Crime",
+    "Reporting",
+    "System",
+    "Complaints"
+  ],
+  "author": "Samuel Agbenorwu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/criswiz/Crime-Reporting-System/issues"
+  },
+  "homepage": "https://github.com/criswiz/Crime-Reporting-System#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mongoose": "^6.4.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}
