@@ -40,16 +40,14 @@ const updateComplaints = asyncHandler(async (req, res) => {
     throw new Error('Goal not found');
   }
 
-  const user = await User.findById(req.user.id);
-
   //Check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error('User not found');
   }
 
   //Make sure the logged in user matches the goal user
-  if (complaint.user.toString() !== user.id) {
+  if (complaint.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error('User not authorized');
   }
@@ -75,16 +73,14 @@ const deleteComplaints = asyncHandler(async (req, res) => {
     throw new Error('Complaint not found');
   }
 
-  const user = await User.findById(req.user.id);
-
   //Check for user
-  if (!user) {
+  if (!req.user) {
     res.status(401);
     throw new Error('User not found');
   }
 
   //Make sure the logged in user matches the goal user
-  if (complaints.user.toString() !== user.id) {
+  if (complaints.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error('User not authorized');
   }
