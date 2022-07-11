@@ -9,12 +9,13 @@ import Spinner from '../components/Spinner';
 function Register() {
   const [formData, setFormData] = useState({
     name: '',
+    ghcard: '',
     email: '',
     password: '',
     cpassword: '',
   });
 
-  const { name, email, password, cpassword } = formData;
+  const { name, ghcard, email, password, cpassword } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -50,6 +51,7 @@ function Register() {
     } else {
       const userData = {
         name,
+        ghcard,
         email,
         password,
       };
@@ -81,6 +83,17 @@ function Register() {
               name="name"
               value={name}
               placeholder="Enter your name"
+              onChange={onChange}
+            />
+          </div>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="ghcard"
+              name="ghcard"
+              value={ghcard}
+              placeholder="Enter your Ghana Card number"
               onChange={onChange}
             />
           </div>

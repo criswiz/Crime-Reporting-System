@@ -16,13 +16,19 @@ const getComplaints = asyncHandler(async (req, res) => {
 // @route POST api/goals
 // @access Private
 const setComplaints = asyncHandler(async (req, res) => {
-  if (!req.body.text) {
+  const { location, complaint, image } = req.body;
+
+  if (!location || !complaint || !image) {
     res.status(400);
-    throw new Error('Please add a text field');
+    throw new Error(
+      'Please input date, location and a description of incident'
+    );
   }
 
   const complaints = await Complaint.create({
-    text: req.body.text,
+    location,
+    complaint,
+    image,
     user: req.user.id,
   });
 
@@ -33,11 +39,11 @@ const setComplaints = asyncHandler(async (req, res) => {
 // @route PUT api/goals/:id
 // @access Private
 const updateComplaints = asyncHandler(async (req, res) => {
-  const complaint = await Goal.findById(req.params.id);
+  const complaints = await Complaint.findById(req.params.id);
 
-  if (!complaint) {
+  if (!complaints) {
     res.status(400);
-    throw new Error('Goal not found');
+    throw new Error('Complaint not found');
   }
 
   //Check for user
@@ -47,7 +53,7 @@ const updateComplaints = asyncHandler(async (req, res) => {
   }
 
   //Make sure the logged in user matches the goal user
-  if (complaint.user.toString() !== req.user.id) {
+  if (complaints.user.toString() !== req.user.id) {
     res.status(401);
     throw new Error('User not authorized');
   }
@@ -59,7 +65,7 @@ const updateComplaints = asyncHandler(async (req, res) => {
       new: true,
     }
   );
-  res.status(200).json(updatedGoal);
+  res.status(200).json(updatedComplaint);
 });
 
 // @desc Delete goals

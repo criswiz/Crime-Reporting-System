@@ -8,11 +8,11 @@ import Spinner from '../components/Spinner';
 
 function Login() {
   const [formData, setFormData] = useState({
-    email: '',
+    ghcard: '',
     password: '',
   });
 
-  const { email, password } = formData;
+  const { ghcard, password } = formData;
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -27,15 +27,11 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/');
+      navigate('/dashboard');
     }
 
     dispatch(reset());
   }, [user, isLoading, isError, isSuccess, message, navigate, dispatch]);
-
-  if (isLoading) {
-    return <Spinner />;
-  }
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -48,12 +44,16 @@ function Login() {
     e.preventDefault();
 
     const userData = {
-      email,
+      ghcard,
       password,
     };
 
     dispatch(login(userData));
   };
+
+  if (isLoading) {
+    return <Spinner />;
+  }
 
   return (
     <>
@@ -68,11 +68,11 @@ function Login() {
         <form onSubmit={onSubmit}>
           <div className="form-group">
             <input
-              type="email"
+              type="text"
               className="form-control"
-              id="email"
-              name="email"
-              value={email}
+              id="ghcard"
+              name="ghcard"
+              value={ghcard}
               placeholder="Enter your Ghana Card Number"
               onChange={onChange}
             />

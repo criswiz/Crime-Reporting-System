@@ -7,25 +7,21 @@ const complaintSchema = mongoose.Schema(
       require: true,
       ref: 'User',
     },
-    text: {
-      type: String,
-      require: [true, 'Please add date'],
-    },
-    text: {
+    location: {
       type: String,
       require: [true, 'Please add location'],
     },
-    text: {
-      type: String,
-      require: [true, 'Please add reference number'],
-    },
-    text: {
+    complaint: {
       type: String,
       require: [true, 'Please add a complaint'],
     },
+    image: {
+      data: Buffer,
+      contentType: String,
+    },
   },
   {
-    timestamp: true,
+    timestamps: true,
   }
 );
 

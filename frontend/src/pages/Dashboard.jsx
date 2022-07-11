@@ -1,19 +1,62 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import ComplaintForm from '../components/ComplaintForm';
+import Spinner from '../components/Spinner';
+import { getComplaint, reset } from '../features/complaints/complaintsSlice';
+import ComplaintItem from '../components/ComplaintItem';
+import { toast } from 'react-toastify';
 
 function Dashboard() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const { user } = useSelector((state) => state.auth);
+  const { complaints, isLoading, isError, message } = useSelector(
+    (state) => state.complaint
+  );
 
   useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
     if (!user) {
       navigate('/login');
     }
-  }, [user, navigate]);
 
-  return <div> News Feed </div>;
+    dispatch(getComplaint());
+
+    return () => {
+      dispatch(reset());
+    };
+  }, [user, navigate, isError, message, dispatch]);
+
+  if (isLoading) {
+    return <Spinner />;
+  }
+
+  return (
+    <>
+      <section className="heading">
+        <h1>Welcome {user && user.name}</h1>
+        <p>Complaints Filed</p>
+      </section>
+
+      <ComplaintForm />
+
+      <section className="content">
+        {complaints.lenght > 0 ? (
+          <div className="complaints">
+            {complaints.map((complaint) => (
+              <ComplaintItem key={complaint._id} complaint={complaint} />
+            ))}
+          </div>
+        ) : (
+          <h3>You have not lodged any complaints yet</h3>
+        )}
+      </section>
+    </>
+  );
 }
 
 export default Dashboard;
