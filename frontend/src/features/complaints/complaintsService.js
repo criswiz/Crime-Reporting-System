@@ -29,14 +29,14 @@ const getComplaint = async (token) => {
 };
 
 //Delete complaint
-const deleteComplaint = async (goalId, token) => {
+const deleteComplaint = async (complaintId, token) => {
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,
     },
   };
 
-  const response = await axios.delete(API_URL, goalId, config);
+  const response = await axios.delete(API_URL, complaintId, config);
 
   return response.data;
 };

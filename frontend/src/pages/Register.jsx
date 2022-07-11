@@ -104,7 +104,7 @@ function Register() {
               id="email"
               name="email"
               value={email}
-              placeholder="Enter your Ghana ard Id number"
+              placeholder="Enter your email address"
               onChange={onChange}
             />
           </div>

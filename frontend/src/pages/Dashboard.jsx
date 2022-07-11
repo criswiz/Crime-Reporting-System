@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import ComplaintForm from '../components/ComplaintForm';
 import Spinner from '../components/Spinner';
 import { getComplaint, reset } from '../features/complaints/complaintsSlice';
 import ComplaintItem from '../components/ComplaintItem';
@@ -39,10 +38,8 @@ function Dashboard() {
     <>
       <section className="heading">
         <h1>Welcome {user && user.name}</h1>
-        <p>Complaints Filed</p>
+        <p>These are you Complaints Filled</p>
       </section>
-
-      <ComplaintForm />
 
       <section className="content">
         {complaints.lenght > 0 ? (
