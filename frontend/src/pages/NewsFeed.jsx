@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-//import { useEffect } from 'react';
-//import { useNavigate } from 'react-router-dom';
+import { NewsContextProvider } from '../NewsContext';
+import News from '../components/News';
 
 function NewsFeed() {
   const { user } = useSelector((state) => state.auth);
-  //const navigate = useNavigate();
 
   return (
     <>
@@ -12,6 +11,10 @@ function NewsFeed() {
         <h1>Welcome {user && user.name}</h1>
         <p>News Feed</p>
       </section>
+
+      <NewsContextProvider>
+        <News />
+      </NewsContextProvider>
     </>
   );
 }
