@@ -40,9 +40,7 @@ function Login() {
     }));
   };
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-
+  const onSubmit = () => {
     const userData = {
       ghcard,
       password,

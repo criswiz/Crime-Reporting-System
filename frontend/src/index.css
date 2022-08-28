@@ -55,7 +55,7 @@ h3 {
 .header ul {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .header ul li {
@@ -64,6 +64,7 @@ h3 {
 
 .header ul li a {
   display: flex;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -217,12 +218,12 @@ h3 {
 .all__news {
   margin: 50px auto;
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   grid-gap: 20px;
 }
 
 .news {
-  max-width: 1280px;
+  max-width: 720px;
   padding: 50px;
   border: 1px solid lightgray;
   border-radius: 5px;
@@ -261,7 +262,6 @@ h3 {
 }
 
 .navbar{
-  background-color: antiquewhite;
   height: 80px;
   display: flex;
   justify-content: flex-start;
@@ -272,4 +272,61 @@ h3 {
   margin-left: 2rem;
   font-size: 2rem;
   background: none;
+}
+
+.navbar-menu{
+  background-color: black;
+  width: 250px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  transition: 850ms;
+}
+
+.nav-menu.active{
+  left: 0;
+  transition: 350ms;
+}
+
+.nav-text{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 8px 0px 8px 16px;
+  list-style: none;
+  height: 60px;
+}
+
+.nav-text a{
+  text-decoration: none;
+  font-size: 18px;
+  width: 95%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-radius: 4px;
+}
+
+.nav-text a:hover{
+  background-color: white;
+}
+
+.nav-menu-items{
+  width: 100%;
+}
+
+.navbar-toggle{
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+span{
+  margin-left: 16px;
 }
