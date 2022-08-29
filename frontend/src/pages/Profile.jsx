@@ -5,7 +5,7 @@ function Profile() {
   const { user } = useSelector((state) => state.auth);
 
   return (
-    <div className="news">
+    <div className="profile">
       <h1 className="news__title">Username: {user && user.name}</h1>
       <p className="news__desc"></p>
       <span className="news__author"></span> <br />

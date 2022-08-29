@@ -15,8 +15,9 @@ function App() {
     <>
       <Router>
         <div className="container">
-          <Navbar />
-          <Header />
+          <Header >
+            <Navbar />
+          </Header>
           <Routes>
             <Route path="/" element={<NewsFeed />} />
             <Route path="/login" element={<Login />} />

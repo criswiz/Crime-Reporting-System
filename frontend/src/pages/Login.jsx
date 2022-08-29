@@ -27,7 +27,7 @@ function Login() {
     }
 
     if (isSuccess || user) {
-      navigate('/');
+      navigate('/profile');
     }
 
     dispatch(reset());
@@ -42,7 +42,7 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    
+
     const userData = {
       ghcard,
       password,

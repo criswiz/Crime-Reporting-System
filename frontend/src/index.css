@@ -330,3 +330,11 @@ h3 {
 span{
   margin-left: 16px;
 }
+
+.profile {
+  max-width: 720px;
+  padding: 50px;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  margin: 0 25%;;
+}
