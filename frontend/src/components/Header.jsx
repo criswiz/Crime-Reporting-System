@@ -1,4 +1,4 @@
-import { FaSignInAlt, FaSignOutAlt, FaUser, FaFile } from 'react-icons/fa';
+import { FaSignInAlt, FaSignOutAlt, FaUser } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout, reset } from '../features/auth/authSlice';
@@ -28,16 +28,6 @@ function Header() {
               <button className="btn" onClick={onLogout}>
                 <FaSignOutAlt /> Logout
               </button>
-            </li>
-            <li>
-              <Link to="/complaint">
-                <FaFile /> Make A Complaint
-              </Link>
-            </li>
-            <li>
-              <Link to="/Profile">
-                <FaUser /> Profile
-              </Link>
             </li>
           </>
         ) : (

@@ -1,11 +1,11 @@
 import React from 'react';
-import { FaSignOutAlt, FaFile } from 'react-icons/fa';
+import { FaFile, FaUser } from 'react-icons/fa';
 import { AiFillHome } from 'react-icons/ai';
 import { BiNews } from 'react-icons/bi';
 
 export const SidebarData = [
   {
-    title: 'Home',
+    title: 'Dashboard',
     path: '/dashboard',
     icon: <AiFillHome />,
     cName: 'nav-text',
@@ -23,9 +23,9 @@ export const SidebarData = [
     cName: 'nav-text',
   },
   {
-    title: 'Logout',
-    path: '/',
-    icon: <FaSignOutAlt />,
+    title: 'Profile',
+    path: '/profile',
+    icon: <FaUser />,
     cName: 'nav-text',
   },
 ];

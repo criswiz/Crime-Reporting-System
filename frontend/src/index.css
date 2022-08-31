@@ -77,13 +77,8 @@ h3 {
 
 .heading {
   font-size: 1.2rem;
-  font-weight: 400;
   margin-bottom: 50px;
   padding: 0 20px;
-}
-
-.heading p {
-  color: #828282;
 }
 
 .complaints{
@@ -228,6 +223,12 @@ h3 {
   border-radius: 5px;
 }
 
+.news_image{
+  width: 300px;
+  height: 200px;
+  border-radius: 5px;
+}
+
 .news__title {
   padding-bottom: 10px;
   border-bottom: 1px solid lightgray;
@@ -275,9 +276,9 @@ h3 {
   background: none;
 }
 
-.navbar-menu{
-  background-color: black;
-  width: 250px;
+.nav-menu{
+  background-color: #828282;
+  width: 300px;
   height: 100vh;
   display: flex;
   justify-content: center;
