@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import '../index.css';
+import Header from './Header';
 
 function Navbar() {
   const [sidebar, setSidebar] = useState(false);
@@ -16,6 +17,7 @@ function Navbar() {
         <Link to="#" className="menu-bars">
           <FaBars onClick={showSidebar} />
         </Link>
+        <Header />
       </div>
       <nav className={sidebar ? 'nav-menu-active' : 'nav-menu'}>
         <ul className="nav-menu-items" onClick={showSidebar}>

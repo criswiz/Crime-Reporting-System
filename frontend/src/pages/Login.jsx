@@ -49,6 +49,7 @@ function Login() {
     };
 
     dispatch(login(userData));
+    window.location.reload(false);
   };
 
   if (isLoading) {

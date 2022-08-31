@@ -34,6 +34,11 @@ function Header() {
                 <FaFile /> Make A Complaint
               </Link>
             </li>
+            <li>
+              <Link to="/Profile">
+                <FaUser /> Profile
+              </Link>
+            </li>
           </>
         ) : (
           <>
@@ -45,11 +50,6 @@ function Header() {
             <li>
               <Link to="/Register">
                 <FaUser /> Register
-              </Link>
-            </li>
-            <li>
-              <Link to="/Profile">
-                <FaUser /> Profile
               </Link>
             </li>
           </>
