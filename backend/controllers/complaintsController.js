@@ -2,20 +2,31 @@ const asyncHandler = require('express-async-handler');
 const multer = require('multer');
 const Complaint = require('../models/complaintsModel');
 const User = require('../models/userModel');
+const fs = require("fs");
 
+
+// SET STORAGE
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
+  destination: function (req, file, cb) {
     cb(null, 'Uploads');
   },
-  filename: (req, file, cb) => {
+  filename: function (req, file, cb) {
     cb(null, file.fieldname + '_' + Date.now());
   },
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({ storage: storage }).single('complaintImage');
+function uploadAsync(req,res){
+  return new Promise(function(resolve,reject){
+       upload(req,res,function(err){
+           if(err !== null) return reject(err);
+           resolve();
+       });
+  });
+}
 
-// @desc Get goals
-// @route GET api/goals
+// @desc Get complaints
+// @route GET api/complaints
 // @access Private
 const getComplaints = asyncHandler(async (req, res) => {
   const complaints = await Complaint.find({ name: req.user.id });
@@ -23,19 +34,17 @@ const getComplaints = asyncHandler(async (req, res) => {
   res.status(200).json(complaints);
 });
 
-// @desc Set goals
-// @route POST api/goals
+// @desc Set conplaints
+// @route POST api/conplaints
 // @access Private
-const setComplaints = asyncHandler(async (req, res) => {
-  const { location, complaint } = req.body;
-  const img = {
-    image: {
-      data: fs.readFileSync(
-        path.join(__dirname + '/uploads/' + req.file.filename)
-      ),
-      contentType: 'image/png',
-    },
-  };
+const setComplaints = asyncHandler( uploadAsync, async (req, res) => {
+    const { location, complaint } = req.body;
+    const img = await fs.readFileSync(req.file.path);
+    const encode_img = img.toString('base64');
+    const final_img = {
+        contentType:req.file.mimetype,
+        image: Buffer.from(encode_img,'base64')
+    };
 
   if (!location || !complaint || !img) {
     res.status(400);
@@ -47,18 +56,27 @@ const setComplaints = asyncHandler(async (req, res) => {
   const complaints = await Complaint.create({
     location,
     complaint,
-    img,
+    final_img,
+    function(err,result){
+      if(err){
+          console.log(err);
+      }else{
+          console.log(result.img.Buffer);
+          console.log("Saved To database");
+          res.contentType(final_img.contentType);
+          res.send(final_img.image);
+      }
+  },
     user: req.user.id,
   });
 
   res.status(200).json(complaints);
 });
 
-// @desc Update goals
-// @route PUT api/goals/:id
+// @desc Update complaints
+// @route PUT api/complaints/:id
 // @access Private
 const updateComplaints = asyncHandler(
-  upload.single('image'),
   async (req, res) => {
     const complaints = await Complaint.findById(req.params.id);
 
@@ -90,8 +108,8 @@ const updateComplaints = asyncHandler(
   }
 );
 
-// @desc Delete goals
-// @route DELETE api/goals/:id
+// @desc Delete complaints
+// @route DELETE api/complaints/:id
 // @access Private
 const deleteComplaints = asyncHandler(async (req, res) => {
   const complaints = await Complaint.findById(req.params.id);
