@@ -15,15 +15,7 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage }).single('complaintImage');
-function uploadAsync(req,res){
-  return new Promise(function(resolve,reject){
-       upload(req,res,function(err){
-           if(err !== null) return reject(err);
-           resolve();
-       });
-  });
-}
+const upload = multer({ storage: storage });
 
 // @desc Get complaints
 // @route GET api/complaints
@@ -37,7 +29,7 @@ const getComplaints = asyncHandler(async (req, res) => {
 // @desc Set conplaints
 // @route POST api/conplaints
 // @access Private
-const setComplaints = asyncHandler( uploadAsync, async (req, res) => {
+const setComplaints = asyncHandler( upload.single('complaintImage'), async (req, res) => {
     const { location, complaint } = req.body;
     const img = await fs.readFileSync(req.file.path);
     const encode_img = img.toString('base64');
