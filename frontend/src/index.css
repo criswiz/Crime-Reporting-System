@@ -3,7 +3,6 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
 }
 
 body {
@@ -217,10 +216,10 @@ h3 {
 }
 
 .news {
-  max-width: 720px;
-  padding: 50px;
+  max-width: 500px;
+  padding: 30px;
   border: 1px solid lightgray;
-  border-radius: 5px;
+  border-radius: 20px;
 }
 
 .news_image{
@@ -266,8 +265,8 @@ h3 {
   justify-content: space-between;
   align-items: center; 
   padding: 0px 0;
-  border-bottom: 1px solid #e6e6e6;
-  margin-bottom: 20px;
+  border-bottom: 1px solid #070606;
+  margin-bottom: 50px;
 }
 
 .menu-bars{
@@ -277,7 +276,7 @@ h3 {
 }
 
 .nav-menu{
-  background-color: #828282;
+  background-color: #4c4c4c79;
   width: 300px;
   height: 100vh;
   display: flex;
@@ -339,4 +338,67 @@ span{
   border: 1px solid lightgray;
   border-radius: 5px;
   margin: 0 25%;;
+}
+
+h1 {
+  color: white;
+  font-weight: 500;
+  text-align: center;
+  margin: 60px 0;
+}
+
+.container-tabs {
+  width: auto;
+  margin: 0 auto;
+  background-color: black;
+}
+
+.tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs button {
+  background-color: lightgray;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 25px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.5s ease-out;
+}
+
+.tabs button:hover {
+  color: white;
+  background-color: rgba(255, 255, 255, 0.675);
+}
+
+.tabs button:disabled {
+  background: rgba(196, 191, 191, 0.365);
+  color: rgb(255, 255, 255);
+}
+
+.title {
+  color: black;
+  font-size: medium;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.content {
+  padding: 50px 80px;
+  background-color: white;
+  font-weight: 300;
+  line-height: 30px;
+  font-size: 16px;
+  text-align: justify;
+  width: auto;
+}
+
+.content,
+button {
+  font-size: 15px;
 }

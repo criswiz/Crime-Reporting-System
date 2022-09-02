@@ -8,6 +8,7 @@ import Register from './pages/Register';
 import Complaint from './pages/Complaint';
 import Navbar from './components/Navbar';
 import Profile from './pages/Profile';
+import Admin from './pages/Admin';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/complaint" element={<Complaint />} />
             <Route path="/profile" element={<Profile />} />
+            <Route path="/admin" element={<Admin />} />
           </Routes>
         </div>
       </Router>
