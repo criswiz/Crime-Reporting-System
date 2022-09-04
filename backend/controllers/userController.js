@@ -77,6 +77,44 @@ const getMe = asyncHandler(async (req, res) => {
   res.status(200).json(req.user);
 });
 
+// @desc Update User
+// @route POST api/users
+// @access Public
+const updateUser = asyncHandler(async (req, res) => {
+  const { ghcard, password } = req.body;
+
+  if (!password || !ghcard) {
+    res.status(400);
+    throw new Error('Please fill all fields');
+  }
+
+  //check if user exist
+  const userExist = await User.findOne({ ghcard });
+
+  if (userExist) {
+    //hash password
+    const salt = await bcrypt.genSalt(10);
+    const hashedPassword = await bcrypt.hash(password, salt);
+
+    //create user
+    const user = await User.updateOne({
+      ghcard,
+      password: hashedPassword,
+    });
+  }
+
+  if (user) {
+    res.status(201).json({
+      _id: user.id,
+      ghcard: user.ghcard,
+      token: generateToken(user._id),
+    });
+  } else {
+    res.status(400);
+    throw new Error('Invalid user data');
+  }
+});
+
 //Generate JWT
 const generateToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -88,4 +126,5 @@ module.exports = {
   registerUser,
   loginUser,
   getMe,
+  updateUser,
 };
