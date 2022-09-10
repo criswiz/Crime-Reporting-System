@@ -7,9 +7,14 @@ function ComplaintForm() {
     location: '',
     complaint: '',
   });
-  const [selectedFile, setSelectedFile] = useState(null);
+
+  const [userInfo, setuserInfo] = useState({
+    file: [],
+    filepreview: null,
+  });
 
   const { location, complaint } = formData;
+  const { userImage } = userInfo.file;
 
   const dispatch = useDispatch();
 
@@ -20,14 +25,20 @@ function ComplaintForm() {
       [e.target.name]: e.target.value,
     }));
   };
-
+  const handleInputChange = (event) => {
+    setuserInfo({
+      ...userInfo,
+      file: event.target.files[0],
+      filepreview: URL.createObjectURL(event.target.files[0]),
+    });
+  };
   //On Submit function
   const onSubmit = (e) => {
     e.preventDefault();
 
     const userComplaint = {
       formData,
-      selectedFile,
+      userImage,
     };
 
     dispatch(createComplaint({ userComplaint }));
@@ -57,11 +68,15 @@ function ComplaintForm() {
           />
         </div>
         <div className="form">
-          <input
-            type="file"
-            value={selectedFile}
-            onChange={(e) => setSelectedFile(e.target.files[0])}
-          />
+          <div className="form-row">
+            <label className="text-white">Select Image :</label>
+            <input
+              type="file"
+              className="form-control"
+              name="upload_file"
+              onChange={handleInputChange}
+            />
+          </div>
         </div>
         <div className="form-group">
           <button className="btn btn-block" type="submit">
