@@ -1,8 +1,12 @@
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { createComplaint } from '../features/complaints/complaintsSlice';
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
+import { FaUser } from 'react-icons/fa';
+import { register, reset } from '../features/auth/authSlice';
+import Spinner from '../components/Spinner';
 
-function UpdateUserDetails() {
+function AddUser() {
   const [formData, setFormData] = useState({
     name: '',
     ghcard: '',
@@ -64,7 +68,7 @@ function UpdateUserDetails() {
     <>
       <section className="heading">
         <h1>
-          <FaUser /> Update User Information
+          <FaUser /> Add User
         </h1>
       </section>
 
@@ -127,7 +131,7 @@ function UpdateUserDetails() {
           </div>
           <div className="form-group">
             <button type="submit" className="btn btn-block">
-              Update User Information
+              Submit
             </button>
           </div>
         </form>
@@ -136,4 +140,4 @@ function UpdateUserDetails() {
   );
 }
 
-export default UpdateUserDetails;
+export default AddUser;

@@ -2,6 +2,8 @@ import { useState } from 'react';
 import '../index.css';
 import ComplaintItem from './ComplaintForm';
 import UpdateUserDetails from './UpdateUserDetails';
+import AllComplaints  from "./AllComplaints";
+import AddUser from "./AddUser";
 
 function Tabs() {
   const [currentTab, setCurrentTab] = useState('1');
@@ -16,13 +18,13 @@ function Tabs() {
       id: 2,
       tabTitle: 'Add User',
       title: 'User Details',
-      content: <ComplaintItem />,
+      content: <AddUser />,
     },
     {
       id: 3,
       tabTitle: 'Complaints',
       title: 'User Complaints',
-      content: <ComplaintItem />,
+      content: <AllComplaints />,
     },
     {
       id: 4,
