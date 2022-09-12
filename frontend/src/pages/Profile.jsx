@@ -7,9 +7,9 @@ function Profile() {
   return (
     <div className="profile">
       <h1 className="news__title">Username: {user && user.name}</h1>
-      <p className="news__desc">Email: {user && user.name}</p>
-      <p className="news__desc">Ghana card Number: {user && user.name}</p>
-      <p className="news__desc">Complaints {user && user.name}</p>
+      <p className="news__desc">Email: {user && user.email}</p>
+      <p className="news__desc">Ghana card Number: {user && user.ghcard}</p>
+      <p className="news__desc">Complaints: 0 complaints lodged</p>
     </div>
   );
 }
