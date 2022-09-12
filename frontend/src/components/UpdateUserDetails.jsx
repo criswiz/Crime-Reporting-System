@@ -65,13 +65,6 @@ function UpdateUserDetails() {
   }
 
   return (
-    <>
-      <section className="heading">
-        <h1>
-          <FaUser /> Update User Information
-        </h1>
-      </section>
-
       <section className="form">
         <form onSubmit={onSubmit}>
           <div className="form-group">
@@ -136,7 +129,6 @@ function UpdateUserDetails() {
           </div>
         </form>
       </section>
-    </>
   );
 }
 

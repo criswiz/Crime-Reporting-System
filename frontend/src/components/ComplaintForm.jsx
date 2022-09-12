@@ -69,7 +69,6 @@ function ComplaintForm() {
         </div>
         <div className="form">
           <div className="form-row">
-            <label className="text-white">Select Image :</label>
             <input
               type="file"
               className="form-control"

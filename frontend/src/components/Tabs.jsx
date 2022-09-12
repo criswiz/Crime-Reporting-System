@@ -4,33 +4,34 @@ import ComplaintItem from './ComplaintForm';
 import UpdateUserDetails from './UpdateUserDetails';
 import AllComplaints  from "./AllComplaints";
 import AddUser from "./AddUser";
+import ComplaintForm from './ComplaintForm';
 
 function Tabs() {
   const [currentTab, setCurrentTab] = useState('1');
   const tabs = [
     {
       id: 1,
+      tabTitle: 'File Complaint',
+      title: 'Complaints',
+      content: <ComplaintForm />,
+    },
+    {
+      id: 2,
       tabTitle: 'Update User Information',
       title: 'User Details',
       content: <UpdateUserDetails />,
     },
     {
-      id: 2,
+      id: 3,
       tabTitle: 'Add User',
       title: 'User Details',
       content: <AddUser />,
     },
     {
-      id: 3,
+      id: 4,
       tabTitle: 'Complaints',
       title: 'User Complaints',
       content: <AllComplaints />,
-    },
-    {
-      id: 4,
-      tabTitle: 'Tab 4',
-      title: 'Title 4',
-      content: <ComplaintItem />,
     },
   ];
 
