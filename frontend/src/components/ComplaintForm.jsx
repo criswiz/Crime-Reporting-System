@@ -14,7 +14,7 @@ function ComplaintForm() {
   });
 
   const { location, complaint } = formData;
-  const { userImage } = userInfo.file;
+  //const { userImage } = userInfo.file;
 
   const dispatch = useDispatch();
 
@@ -37,8 +37,7 @@ function ComplaintForm() {
     e.preventDefault();
 
     const userComplaint = {
-      formData,
-      userImage,
+      formData
     };
 
     dispatch(createComplaint({ userComplaint }));

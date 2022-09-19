@@ -29,36 +29,26 @@ const getComplaints = asyncHandler(async (req, res) => {
 // @desc Set conplaints
 // @route POST api/conplaints
 // @access Private
-const setComplaints = asyncHandler( upload.single('complaintImage'), async (req, res) => {
+const setComplaints = asyncHandler( async (req, res) => {
     const { location, complaint } = req.body;
-    const img = await fs.readFileSync(req.file.path);
-    const encode_img = img.toString('base64');
-    const final_img = {
+    //const img = await fs.readFileSync(req.file.path);
+    //const encode_img = img.toString('base64');
+    /*const final_img = {
         contentType:req.file.mimetype,
         image: Buffer.from(encode_img,'base64')
-    };
+    };*/
 
-  if (!location || !complaint || !img) {
+  if (!location || !complaint ) {
     res.status(400);
     throw new Error(
-      'Please input date, location and a description of incident'
+      'Please input location and a description of incident'
     );
   }
 
   const complaints = await Complaint.create({
     location,
     complaint,
-    final_img,
-    function(err,result){
-      if(err){
-          console.log(err);
-      }else{
-          console.log(result.img.Buffer);
-          console.log("Saved To database");
-          res.contentType(final_img.contentType);
-          res.send(final_img.image);
-      }
-  },
+  
     user: req.user.id,
   });
 
