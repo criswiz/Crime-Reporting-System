@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import React from 'react';
 import { NewsContextProvider } from '../NewsContext';
 import News from '../components/News';
 

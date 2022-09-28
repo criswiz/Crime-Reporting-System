@@ -1,6 +1,5 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import '../index.css';
-import ComplaintItem from './ComplaintForm';
 import UpdateUserDetails from './UpdateUserDetails';
 import AllComplaints  from "./AllComplaints";
 import AddUser from "./AddUser";

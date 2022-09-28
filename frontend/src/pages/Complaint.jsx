@@ -1,4 +1,5 @@
 import ComplaintForm from '../components/ComplaintForm';
+import React from 'react';
 
 function Complaint() {
   return (

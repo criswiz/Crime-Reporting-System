@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { deleteComplaint } from '../features/complaints/complaintsSlice';
+import React from 'react';
 
 function ComplaintItem({ complaint }) {
   const dispatch = useDispatch();

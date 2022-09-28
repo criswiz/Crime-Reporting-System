@@ -1,3 +1,5 @@
+import React from "react";
+
 function NewsArticle({ data }) {
   return (
     <div className="news">

@@ -1,5 +1,6 @@
 import '../index.css';
 import { useSelector } from 'react-redux';
+import React from 'react';
 
 function Profile() {
   const { user } = useSelector((state) => state.auth);

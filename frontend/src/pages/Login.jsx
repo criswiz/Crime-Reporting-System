@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { FaSignInAlt } from 'react-icons/fa';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -59,6 +59,7 @@ function Login() {
   return (
     <>
       <section className="heading">
+        <img src="https://omanfm1071.com/wp-content/uploads/2022/03/1-ghana-police-service.jpg" width="300px" height="200px" alt=''/>
         <h1>
           <FaSignInAlt /> Login
         </h1>
